@@ -14,9 +14,10 @@ Na pasta dici e fazer
 
 
 **Notas**
-Futuramente talvez faça um snap deste programa ou disponiblize
-directamente o binário em formato comprimido para não terem de compilar.
+No Ubuntu pode ser instalado apenas com
 
-Também estou a pensar se farei uma versão com GUI.
+sudo snap install dici
 
 Este dicionário é PT-pt.
+
+[![Get it from the Snap Store](https://snapcraft.io/en/dark/install.svg)](https://snapcraft.io/dici)
