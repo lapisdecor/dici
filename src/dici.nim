@@ -6,7 +6,6 @@ import std/parseopt
 var fim = false
 
 proc exit() =
-  echo "A palavra não está no dicionário"
   fim = true
 
 when isMainModule:
@@ -16,12 +15,29 @@ when isMainModule:
     case kind
     of cmdArgument:
       word = key
-    of cmdLongOption, cmdShortOption:
-      discard
+    of cmdLongOption:
+      if key == "help":
+        echo "Uso: dici palavra"
+        exit()
+        break
+      else:
+        discard
+    of cmdShortOption:
+      if key == "h":
+        echo "Uso: dici palavra"
+        exit()
+        break
+      else:
+        discard
     of cmdEnd:
       discard
+
+  if fim:
+    quit()
+
   var response = ""
   var client = newHttpClient()
+
   try:
     response = client.getContent("https://api.dicionario-aberto.net/word/" & word)
     if response == "[]":
@@ -30,6 +46,7 @@ when isMainModule:
     client.close()
 
   if fim:
+    echo "A palavra não está no dicionário"
     quit()
 
 
